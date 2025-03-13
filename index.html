@@ -98,12 +98,12 @@
     <!-- پیام واقعی -->
     <div id="private-message" class="hidden">
         <div class="heart"></div>
-        <h1>مامان، عاشقتم</h1>
+        <h1>بیا تمبیهت تنم</h1>
     </div>
 
     <script>
         // کلید خاص برای دسترسی به پیام واقعی
-        const secretKey = "melina";
+        const secretKey = "masoumeh";
 
         function checkSecretKey() {
             const enteredKey = document.getElementById("secret-key").value;
@@ -111,7 +111,7 @@
                 // اگر کلید صحیح باشد، پیام واقعی نمایش داده می‌شود
                 document.getElementById("public-message").style.display = "none";
                 document.getElementById("private-message").classList.remove("hidden");
-                document.title = "یک پیام ویژه برای مامان"; // تغییر عنوان صفحه
+                document.title = "یک پیام ویژه"; // تغییر عنوان صفحه
             } else {
                 alert("رمز وارد شده اشتباه است! لطفاً دوباره تلاش کنید.");
             }

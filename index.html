@@ -1,43 +1,48 @@
 <!DOCTYPE html>
-<html lang="fa">
+<html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>رضا عاشقته</title>
+    <title>تست</title>
     <style>
         body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f3e4;
+            margin: 0;
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f0f0f0;
-            font-family: Arial, sans-serif;
             text-align: center;
+            direction: rtl;
+        }
+        .hidden {
+            display: none;
         }
         .heart {
-            width: 100px;
-            height: 100px;
-            background-color: red;
+            width: 120px; /* اندازه کوچک‌تر */
+            height: 120px; /* اندازه کوچک‌تر */
+            background-color: #e74c3c;
             position: relative;
             transform: rotate(-45deg);
             animation: beat 1s infinite;
+            margin: 10px auto; /* فاصله بین قلب و متن */
         }
         .heart::before,
         .heart::after {
             content: "";
-            width: 100px;
-            height: 100px;
-            background-color: red;
+            width: 120px; /* اندازه کوچک‌تر */
+            height: 120px; /* اندازه کوچک‌تر */
+            background-color: #e74c3c;
             border-radius: 50%;
             position: absolute;
         }
         .heart::before {
-            top: -50px;
+            top: -60px;
             left: 0;
         }
         .heart::after {
-            left: 50px;
+            left: 60px;
             top: 0;
         }
         @keyframes beat {
@@ -48,11 +53,77 @@
                 transform: scale(1.1) rotate(-45deg);
             }
         }
+        h1 {
+            font-size: 28px;
+            color: #333;
+            font-weight: bold;
+            margin-top: 20px; /* فاصله بین قلب و عنوان */
+        }
+        p {
+            font-size: 18px;
+            color: #555;
+            line-height: 1.6;
+        }
+        input[type="password"] {
+            padding: 10px;
+            font-size: 16px;
+            margin-top: 10px;
+            text-align: center;
+            direction: ltr;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #c0392b;
+        }
     </style>
 </head>
 <body>
-    <div>
-        <div class="heart"></div>
+
+    <!-- متن عمومی -->
+    <div id="public-message">
+        <h1>سلام!</h1>
+        <p>این یک صفحه تست است. اگر کلید خاص را دارید، می‌توانید پیام واقعی را مشاهده کنید.</p>
+        <input type="password" id="secret-key" placeholder="رمز عبور را وارد کنید">
+        <button onclick="checkSecretKey()">ورود</button>
     </div>
+
+    <!-- پیام واقعی -->
+    <div id="private-message" class="hidden">
+        <div class="heart"></div>
+        <h1>مامان، عاشقتم ❤️</h1>
+    </div>
+
+    <script>
+        // کلید خاص برای دسترسی به پیام واقعی
+        const secretKey = "melina";
+
+        function checkSecretKey() {
+            const enteredKey = document.getElementById("secret-key").value;
+            if (enteredKey === secretKey) {
+                // اگر کلید صحیح باشد، پیام واقعی نمایش داده می‌شود
+                document.getElementById("public-message").style.display = "none";
+                document.getElementById("private-message").classList.remove("hidden");
+                document.title = "یک پیام ویژه برای مامان"; // تغییر عنوان صفحه
+            } else {
+                alert("رمز وارد شده اشتباه است! لطفاً دوباره تلاش کنید.");
+            }
+        }
+
+        // اگر کاربر Enter بزند، کلید بررسی شود
+        document.getElementById("secret-key").addEventListener("keyup", function(event) {
+            if (event.key === "Enter") {
+                checkSecretKey();
+            }
+        });
+    </script>
+
 </body>
 </html>

@@ -1,129 +1,384 @@
+
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تست</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f9f3e4;
-            margin: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            direction: rtl;
-        }
-        .hidden {
-            display: none;
-        }
-        .heart {
-            width: 120px; /* اندازه کوچک‌تر */
-            height: 120px; /* اندازه کوچک‌تر */
-            background-color: #e74c3c;
-            position: relative;
-            transform: rotate(-45deg);
-            animation: beat 1s infinite;
-            margin: 10px auto; /* فاصله بین قلب و متن */
-        }
-        .heart::before,
-        .heart::after {
-            content: "";
-            width: 120px; /* اندازه کوچک‌تر */
-            height: 120px; /* اندازه کوچک‌تر */
-            background-color: #e74c3c;
-            border-radius: 50%;
-            position: absolute;
-        }
-        .heart::before {
-            top: -60px;
-            left: 0;
-        }
-        .heart::after {
-            left: 60px;
-            top: 0;
-        }
-        @keyframes beat {
-            0%, 100% {
-                transform: scale(1) rotate(-45deg);
-            }
-            50% {
-                transform: scale(1.1) rotate(-45deg);
-            }
-        }
-        h1 {
-            font-size: 28px;
-            color: #333;
-            font-weight: bold;
-            margin-top: 20px; /* فاصله بین قلب و عنوان */
-        }
-        p {
-            font-size: 18px;
-            color: #555;
-            line-height: 1.6;
-        }
-        input[type="password"] {
-            padding: 10px;
-            font-size: 16px;
-            margin-top: 10px;
-            text-align: center;
-            direction: ltr;
-        }
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: #e74c3c;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #c0392b;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>یک سورپرایز برای مامان ❤️</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Tahoma, Arial, sans-serif;
+    background: linear-gradient(135deg, #fff1e8, #fce0e5, #fff4e8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    color: #633b42;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.container {
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+    padding: 30px 22px;
+    background: rgba(255,255,255,0.72);
+    border: 1px solid rgba(255,255,255,0.9);
+    border-radius: 28px;
+    box-shadow: 0 15px 50px rgba(155,75,90,0.13);
+    position: relative;
+    z-index: 2;
+}
+
+h1 {
+    color: #a9435a;
+    font-size: 28px;
+}
+
+p {
+    line-height: 2;
+    font-size: 16px;
+}
+
+.subtitle {
+    color: #956c70;
+    font-size: 14px;
+}
+
+input {
+    width: 85%;
+    padding: 14px;
+    border: 1px solid #edc2ca;
+    border-radius: 12px;
+    text-align: center;
+    font-size: 16px;
+    outline: none;
+    margin: 15px 0;
+    background: #fffafa;
+}
+
+button {
+    padding: 13px 35px;
+    background: linear-gradient(135deg, #e77d91, #bd4965);
+    border: none;
+    border-radius: 30px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px #d98b9a55;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: translateY(-3px);
+}
+
+.error {
+    color: #c03950;
+    font-size: 13px;
+}
+
+/* پاکت نامه */
+
+.envelope {
+    font-size: 85px;
+    animation: float 2s infinite ease-in-out;
+    margin: 15px;
+}
+
+@keyframes float {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+}
+
+/* قلب */
+
+.heart {
+    width: 75px;
+    height: 75px;
+    background: #e74c68;
+    position: relative;
+    transform: rotate(-45deg);
+    margin: 35px auto 45px;
+    animation: beat 1s infinite;
+}
+
+.heart::before,
+.heart::after {
+    content: "";
+    width: 75px;
+    height: 75px;
+    background: #e74c68;
+    border-radius: 50%;
+    position: absolute;
+}
+
+.heart::before {
+    top: -37px;
+    left: 0;
+}
+
+.heart::after {
+    left: 37px;
+    top: 0;
+}
+
+@keyframes beat {
+    0%,100% { transform: rotate(-45deg) scale(1); }
+    50% { transform: rotate(-45deg) scale(1.18); }
+}
+
+.birthday-title {
+    font-size: 29px;
+    color: #c34d68;
+    margin-top: 30px;
+    animation: appear 2s ease;
+}
+
+.message {
+    font-size: 16px;
+    line-height: 2.4;
+    color: #79545a;
+    white-space: pre-line;
+    text-align: center;
+    min-height: 150px;
+}
+
+.signature {
+    color: #bd526c;
+    font-size: 19px;
+    margin-top: 25px;
+}
+
+@keyframes appear {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* قلب های شناور و گلبرگ */
+
+.floating {
+    position: fixed;
+    bottom: -30px;
+    pointer-events: none;
+    animation: rise linear forwards;
+    z-index: 1;
+}
+
+@keyframes rise {
+    to {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.footer {
+    color: #bd8791;
+    font-size: 12px;
+    margin-top: 25px;
+}
+
+</style>
 </head>
+
 <body>
 
-    <!-- متن عمومی -->
-    <div id="public-message">
-        <h1>سلام!</h1>
-        <p>این یک صفحه تست است. اگر کلید خاص را دارید، می‌توانید پیام واقعی را مشاهده کنید.</p>
-        <input type="password" id="secret-key" placeholder="رمز عبور را وارد کنید">
-        <button onclick="checkSecretKey()">ورود</button>
+<!-- صفحه اول -->
+
+<div class="container" id="welcome">
+
+    <div class="envelope">💌</div>
+
+    <h1>برای عزیزترین آدم زندگی من...</h1>
+
+    <p>
+        یه سورپرایز کوچولو برات دارم.<br>
+        اما برای دیدنش باید رمز این نامه رو بدونی ❤️
+    </p>
+
+    <input
+        type="password"
+        id="secret-key"
+        placeholder="رمز ورود را وارد کن"
+    >
+
+    <br>
+
+    <button onclick="checkPassword()">باز کردن نامه ❤️</button>
+
+    <p id="error" class="error"></p>
+
+    <div class="footer">یک نامه از طرف کسی که خیلی دوستت داره 🌹</div>
+
+</div>
+
+
+<!-- صفحه تولد -->
+
+<div class="container hidden" id="birthday">
+
+    <div style="font-size:35px">🌹 ✨ 🌹</div>
+
+    <div class="heart"></div>
+
+    <h1 class="birthday-title">
+        تولدت مبارک مامان قشنگم ❤️
+    </h1>
+
+    <p class="subtitle">
+        برای فرشته‌ای که هیچ‌وقت جایگزینی نداره...
+    </p>
+
+    <div class="message" id="typed-message"></div>
+
+    <div class="signature">
+        دوستت دارم، بیشتر از تمام کلمات دنیا ❤️
     </div>
 
-    <!-- پیام واقعی -->
-    <div id="private-message" class="hidden">
-        <div class="heart"></div>
-        <h1>عاشقتم مامان</h1>
+    <div style="font-size:35px; margin-top:25px">
+        🎂 🌷 💗 🌷 🎂
     </div>
 
-    <script>
-        // کلید خاص برای دسترسی به پیام واقعی
-        const secretKey = "melina";
+    <div class="footer">
+        با تمام عشق دنیا، از طرف فرزندت ❤️
+    </div>
 
-        function checkSecretKey() {
-            const enteredKey = document.getElementById("secret-key").value;
-            if (enteredKey === secretKey) {
-                // اگر کلید صحیح باشد، پیام واقعی نمایش داده می‌شود
-                document.getElementById("public-message").style.display = "none";
-                document.getElementById("private-message").classList.remove("hidden");
-                document.title = "یک پیام ویژه"; // تغییر عنوان صفحه
-            } else {
-                alert("رمز وارد شده اشتباه است! لطفاً دوباره تلاش کنید.");
-            }
+</div>
+
+
+<script>
+
+// رمز عبور
+const secretKey = "melina";
+
+// متن نامه
+const message = `مامان عزیزتر از جانم...
+
+امروز روزیه که یکی از قشنگ‌ترین
+اتفاق‌های زندگی دنیا افتاده؛
+روزی که تو به دنیا اومدی.
+
+نمی‌دونم چطور می‌تونم با کلمات
+تمام عشقی رو که بهت دارم بیان کنم.
+
+فقط می‌خوام بدونی که وجودت
+یکی از بزرگ‌ترین نعمت‌های زندگی منه.
+
+ممنونم برای تمام محبت‌هات،
+برای تمام نگرانی‌هات،
+برای تمام لحظه‌هایی که کنارم بودی
+و برای عشقی که هیچ‌وقت تموم نمی‌شه.
+
+آرزو می‌کنم همیشه دلت شاد باشه،
+لبخند از روی لبت کنار نره
+و هر روز زندگیت پر از آرامش و اتفاق‌های قشنگ باشه.
+
+تولدت مبارک قشنگ‌ترین مامان دنیا...
+
+خیلی خیلی دوستت دارم ❤️`;
+
+
+function checkPassword() {
+
+    const entered = document.getElementById("secret-key").value;
+
+    if (entered === secretKey) {
+
+        document.getElementById("welcome").classList.add("hidden");
+
+        document.getElementById("birthday").classList.remove("hidden");
+
+        document.title = "تولدت مبارک مامان ❤️";
+
+        startTyping();
+
+        startHearts();
+
+    } else {
+
+        document.getElementById("error").innerText =
+            "رمز اشتباهه! دوباره امتحان کن عزیزم ❤️";
+
+    }
+
+}
+
+
+// افکت تایپ شدن نامه
+function startTyping() {
+
+    let index = 0;
+
+    const target = document.getElementById("typed-message");
+
+    function type() {
+
+        if (index < message.length) {
+
+            target.textContent += message.charAt(index);
+
+            index++;
+
+            setTimeout(type, 55);
+
         }
 
-        // اگر کاربر Enter بزند، کلید بررسی شود
-        document.getElementById("secret-key").addEventListener("keyup", function(event) {
-            if (event.key === "Enter") {
-                checkSecretKey();
-            }
-        });
-    </script>
+    }
+
+    type();
+
+}
+
+
+// تولید قلب و گلبرگ
+function startHearts() {
+
+    const symbols = ["❤️", "💕", "🌸", "🌹", "💗", "✨"];
+
+    setInterval(() => {
+
+        const item = document.createElement("div");
+
+        item.className = "floating";
+
+        item.innerText =
+            symbols[Math.floor(Math.random() * symbols.length)];
+
+        item.style.left = Math.random() * 100 + "vw";
+
+        item.style.fontSize = (15 + Math.random() * 20) + "px";
+
+        item.style.animationDuration = (5 + Math.random() * 5) + "s";
+
+        document.body.appendChild(item);
+
+        setTimeout(() => item.remove(), 10000);
+
+    }, 450);
+
+}
+
+
+// ورود با Enter
+document.getElementById("secret-key").addEventListener("keyup", function(event) {
+
+    if (event.key === "Enter") {
+        checkPassword();
+    }
+
+});
+
+</script>
 
 </body>
 </html>
